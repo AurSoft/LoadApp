@@ -1,14 +1,35 @@
 <resources>
-    <string name="app_name">ND940C3-Project</string>
+    <string name="app_name">LoadApp</string>
     <string name="app_description">Download files from Internet</string>
     <string name="action_settings">Settings</string>
 
 
-    <string name="notification_title">Udacity: Android Kotlin Nanodegree </string>
-    <string name="notification_description">The Project 3 repository is downloaded</string>
-    <string name="notification_button">See changes</string>
+    <string name="notification_title">LoadApp: third Udacity nanodegree project</string>
+    <string name="msg_body_ok">Download complete</string>
+    <string name="msg_body_failure">Could not download file</string>
+    <string name="notification_button">Show details</string>
+    <string name="notification_channel">loadapp_channel</string>
+    <string name="notification_channel_name">download</string>
+    <string name="notification_channel_desc">LoadApp downloads</string>
 
-    <string name="button_name">Click me</string>
-    <string name="button_loading">We are loading </string>
-    <string name="title_activity_detail">DetailActivity</string>
+    <string name="button_name">Download</string>
+    <string name="button_loading">Starting </string>
+
+    <string name="radio_text_glide">Glide - Image Loading Library by BumpTech</string>
+    <string name="radio_text_app">LoadApp - Current repository by Udacity</string>
+    <string name="radio_text_retrofit">Retrofit - Type-safe HTTP client for Android and Java by Square, Inc</string>
+    <string name="main_app_image_desc">An icon representing download action</string>
+    <string name="toast_msg">Please, select an option</string>
+    <string name="toast_msg_no_permission">Cannot download without permission</string>
+
+    <string name="glide_filename">glide.zip</string>
+    <string name="c3_filename">loadappstarter.zip</string>
+    <string name="retrofit_filename">retrofit.zip</string>
+    <string name="status_ok">OK!</string>
+    <string name="status_failure">Failure</string>
+
+    <string name="detail_title">Download Info</string>
+    <string name="text_filename">File name</string>
+    <string name="text_status">Status</string>
+    <string name="text_path">Folder</string>
 </resources>
