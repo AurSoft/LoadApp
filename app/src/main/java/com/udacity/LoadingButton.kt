@@ -7,10 +7,8 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.RectF
 import android.util.AttributeSet
-import android.util.Log
 import android.view.View
 import android.view.animation.DecelerateInterpolator
-import android.widget.ProgressBar
 import kotlin.properties.Delegates
 
 class LoadingButton @JvmOverloads constructor(
@@ -85,7 +83,6 @@ class LoadingButton @JvmOverloads constructor(
     }
 
     private fun drawProgressBar(canvas: Canvas?, progress: Float) {
-        //Log.d("drawRectangle", progress.toString())
         paint.color = context.getColor(R.color.colorPrimaryDark)
         canvas?.drawRect(0f, 0f, progress, heightSize.toFloat(), paint)
     }

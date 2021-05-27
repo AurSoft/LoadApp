@@ -10,7 +10,7 @@ import android.os.Build
 import androidx.core.app.NotificationCompat
 
 // Notification ID.
-private val NOTIFICATION_ID = 0
+private const val NOTIFICATION_ID = 0
 
 fun NotificationManager.sendDownloadNotification(messageBody: String, applicationContext: Context, extras: Map<String, String>) {
     val detailsIntent =

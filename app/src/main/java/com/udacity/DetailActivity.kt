@@ -17,7 +17,7 @@ class DetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_detail)
         setSupportActionBar(toolbar)
         val notificationManager = getSystemService(NotificationManager::class.java) as NotificationManager
-        notificationManager.cancelAll()
+        notificationManager.cancelNotifications()
         updateDetails(intent)
         button_ok.setOnClickListener { finish() }
     }
