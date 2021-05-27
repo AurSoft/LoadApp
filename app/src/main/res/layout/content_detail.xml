@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layoutDescription="@xml/content_detail_scene"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".DetailActivity"
     tools:showIn="@layout/activity_detail">
@@ -98,7 +97,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.90999997" />
+    <!--
+        Nesting MotionLayout in a ConstraintLayout to work around some glitches of TextViews not
+        being correctly displayed when their visibility/text gets changed on onCreate and there's
+        an animation starting automatically.
 
+        https://knowledge.udacity.com/questions/595645
+    -->
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        app:layoutDescription="@xml/content_detail_scene"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <ImageView
         android:id="@+id/image_status"
         android:layout_width="wrap_content"
@@ -108,4 +117,5 @@
         app:layout_constraintStart_toEndOf="@+id/text_status_value"
         app:layout_constraintTop_toTopOf="@+id/text_status_value"
         app:srcCompat="@drawable/ic_baseline_check_circle_24" />
-</androidx.constraintlayout.motion.widget.MotionLayout>
+    </androidx.constraintlayout.motion.widget.MotionLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
