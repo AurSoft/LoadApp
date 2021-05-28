@@ -33,12 +33,14 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         registerReceiver(receiver, IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE))
-
         custom_button.setOnClickListener {
             Log.d("RadioGroup", radioGroup.checkedRadioButtonId.toString())
             if (checkStoragePermission()) {
+                custom_button.enableAnimation = radioGroup.checkedRadioButtonId != -1
                 when (radioGroup.checkedRadioButtonId) {
-                    -1 -> Toast.makeText(this, getString(R.string.toast_msg), Toast.LENGTH_SHORT).show()
+                    -1 -> {
+                        Toast.makeText(this, getString(R.string.toast_msg), Toast.LENGTH_SHORT).show()
+                    }
                     R.id.radio_glide -> download(GLIDE_URL)
                     R.id.radio_app -> download(C3_URL)
                     R.id.radio_retrofit -> download(RETROFIT_URL)

@@ -9,6 +9,7 @@ import android.graphics.RectF
 import android.util.AttributeSet
 import android.view.View
 import android.view.animation.DecelerateInterpolator
+import androidx.core.content.withStyledAttributes
 import kotlin.properties.Delegates
 
 class LoadingButton @JvmOverloads constructor(
@@ -21,17 +22,28 @@ class LoadingButton @JvmOverloads constructor(
 
     private val valueAnimator = ValueAnimator()
 
-    private var buttonState: ButtonState by Delegates.observable<ButtonState>(ButtonState.Completed) { p, old, new -> }
+    private var buttonState: ButtonState = ButtonState.Completed
 
     private val paint = Paint().apply {
         style = Paint.Style.FILL
         isAntiAlias = true
-        textSize = resources.getDimension(R.dimen.default_text_size)
         strokeWidth = 0f
         textAlign = Paint.Align.CENTER
     }
 
+    private var bgColor = 0
+    private var textColor = 0
+    private var textSize = 0.0f
+
+    var enableAnimation = true
+
     init {
+        isClickable = true
+        context.withStyledAttributes(attrs, R.styleable.LoadingButton) {
+            bgColor = getColor(R.styleable.LoadingButton_bgColor, Color.DKGRAY)
+            textColor = getColor(R.styleable.LoadingButton_textColor, Color.WHITE)
+            textSize = getDimension(R.styleable.LoadingButton_textSize, 60f)
+        }
         initValueAnimator()
     }
 
@@ -52,16 +64,20 @@ class LoadingButton @JvmOverloads constructor(
 
     override fun performClick(): Boolean {
         super.performClick()
-        isEnabled = false
         buttonState = ButtonState.Clicked
-        valueAnimator.start()
-        buttonState = ButtonState.Loading
+        if (enableAnimation) {
+            isEnabled = false
+            valueAnimator.start()
+            buttonState = ButtonState.Loading
+        } else {
+            buttonState = ButtonState.Completed
+        }
         return true
     }
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
-        setBackgroundColor(context.getColor(R.color.colorPrimary))
+        setBackgroundColor(bgColor)
         drawProgressBar(canvas, progress)
         drawButtonText(canvas)
         drawLoadingCircle(canvas, progress)
@@ -88,10 +104,11 @@ class LoadingButton @JvmOverloads constructor(
     }
 
     private fun drawButtonText(canvas: Canvas?) {
-        paint.color = Color.WHITE
+        paint.color = textColor
+        paint.textSize = textSize
         val buttonText = when(buttonState) {
-            ButtonState.Completed -> context.getString(R.string.button_name)
-            else -> context.getString(R.string.button_loading)
+            ButtonState.Loading -> context.getString(R.string.button_loading)
+            else -> context.getString(R.string.button_name)
         }
         canvas?.drawText(
                 buttonText,

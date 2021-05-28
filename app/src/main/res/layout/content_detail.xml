@@ -1,121 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".DetailActivity"
     tools:showIn="@layout/activity_detail">
-
-    <TextView
-        android:id="@+id/text_detail_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto_bold"
-        android:text="@string/detail_title"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.25" />
-
-    <TextView
-        android:id="@+id/text_filename"
-        style="@style/ContentDetailText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/text_filename"
-        app:layout_constraintStart_toStartOf="@+id/text_detail_title"
-        app:layout_constraintTop_toBottomOf="@+id/text_detail_title" />
-
-    <TextView
-        android:id="@+id/text_filename_value"
-        style="@style/ContentDetailText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:fontFamily="@font/roboto"
-        tools:text="TextView"
-        app:layout_constraintBaseline_toBaselineOf="@+id/text_filename"
-        app:layout_constraintStart_toEndOf="@+id/text_filename" />
-
-    <TextView
-        android:id="@+id/text_status"
-        style="@style/ContentDetailText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/text_status"
-        app:layout_constraintStart_toStartOf="@+id/text_filename"
-        app:layout_constraintTop_toBottomOf="@+id/text_filename" />
-
-    <TextView
-        android:id="@+id/text_status_value"
-        style="@style/ContentDetailText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto"
-        tools:text="TextView"
-        app:layout_constraintBaseline_toBaselineOf="@+id/text_status"
-        app:layout_constraintStart_toStartOf="@+id/text_filename_value" />
-
-
-    <TextView
-        android:id="@+id/text_path"
-        style="@style/ContentDetailText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/text_path"
-        app:layout_constraintStart_toStartOf="@+id/text_status"
-        app:layout_constraintTop_toBottomOf="@+id/text_status" />
-
-    <TextView
-        android:id="@+id/text_path_value"
-        style="@style/ContentDetailText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto"
-        tools:text="TextView"
-        app:layout_constraintBaseline_toBaselineOf="@+id/text_path"
-        app:layout_constraintStart_toStartOf="@+id/text_status_value" />
-
-    <Button
-        android:id="@+id/button_ok"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:text="@android:string/ok"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.90999997" />
-    <!--
-        Nesting MotionLayout in a ConstraintLayout to work around some glitches of TextViews not
-        being correctly displayed when their visibility/text gets changed on onCreate and there's
-        an animation starting automatically.
-
-        https://knowledge.udacity.com/questions/595645
-    -->
-    <androidx.constraintlayout.motion.widget.MotionLayout
-        app:layoutDescription="@xml/content_detail_scene"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <ImageView
-        android:id="@+id/image_status"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/text_status_value"
-        app:layout_constraintStart_toEndOf="@+id/text_status_value"
-        app:layout_constraintTop_toTopOf="@+id/text_status_value"
-        app:srcCompat="@drawable/ic_baseline_check_circle_24" />
-    </androidx.constraintlayout.motion.widget.MotionLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/text_detail_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/detail_title"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="36sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.25" />
+
+        <TextView
+            android:id="@+id/text_filename"
+            style="@style/ContentDetailText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/text_filename"
+            app:layout_constraintStart_toStartOf="@+id/text_detail_title"
+            app:layout_constraintTop_toBottomOf="@+id/text_detail_title" />
+
+        <TextView
+            android:id="@+id/text_filename_value"
+            style="@style/ContentDetailText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:fontFamily="@font/roboto"
+            tools:text="TextView"
+            app:layout_constraintBaseline_toBaselineOf="@+id/text_filename"
+            app:layout_constraintStart_toEndOf="@+id/text_filename" />
+
+        <TextView
+            android:id="@+id/text_status"
+            style="@style/ContentDetailText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/text_status"
+            app:layout_constraintStart_toStartOf="@+id/text_filename"
+            app:layout_constraintTop_toBottomOf="@+id/text_filename" />
+
+        <TextView
+            android:id="@+id/text_status_value"
+            style="@style/ContentDetailText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            tools:text="TextView"
+            app:layout_constraintBaseline_toBaselineOf="@+id/text_status"
+            app:layout_constraintStart_toStartOf="@+id/text_filename_value" />
+
+
+        <TextView
+            android:id="@+id/text_path"
+            style="@style/ContentDetailText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/text_path"
+            app:layout_constraintStart_toStartOf="@+id/text_status"
+            app:layout_constraintTop_toBottomOf="@+id/text_status" />
+
+        <TextView
+            android:id="@+id/text_path_value"
+            style="@style/ContentDetailText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            tools:text="TextView"
+            app:layout_constraintBaseline_toBaselineOf="@+id/text_path"
+            app:layout_constraintStart_toStartOf="@+id/text_status_value" />
+
+        <Button
+            android:id="@+id/button_ok"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:text="@android:string/ok"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.90999997" />
+        <!--
+            Nesting MotionLayout in a ConstraintLayout to work around some glitches of TextViews not
+            being correctly displayed when their visibility/text gets changed on onCreate and there's
+            an animation starting automatically.
+
+            https://knowledge.udacity.com/questions/595645
+        -->
+        <androidx.constraintlayout.motion.widget.MotionLayout
+            app:layoutDescription="@xml/content_detail_scene"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/image_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:contentDescription="@string/status_icon_desc"
+            app:layout_constraintBottom_toBottomOf="@+id/text_status_value"
+            app:layout_constraintStart_toEndOf="@+id/text_status_value"
+            app:layout_constraintTop_toTopOf="@+id/text_status_value"
+            app:srcCompat="@drawable/ic_baseline_check_circle_24" />
+        </androidx.constraintlayout.motion.widget.MotionLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
